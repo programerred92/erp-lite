@@ -1,0 +1,8 @@
+plugins {
+	id 'java'
+}
+
+dependencies {
+	// Dependencias específicas de erp-common si las hay
+}
+
