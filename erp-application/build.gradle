@@ -1,0 +1,9 @@
+plugins {
+	id 'java'
+}
+
+dependencies {
+	implementation project(':erp-domain')
+	implementation project(':erp-common')
+}
+
