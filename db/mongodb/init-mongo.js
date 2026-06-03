@@ -1,24 +1,16 @@
-//
-==========================================================================
-===
+//==========================================================================
 // ERP LITE - MongoDB Initialization Script
 // Purpose: Initialize catalog database with product categories and audit
 logs
 // Database: erp_catalog_db
 // Collections: catalogs, audit_logs, product_documents
-//
-==========================================================================
-===
+//==========================================================================
 // Switch to the ERP catalog database
 db = db.getSiblingDB('erp_catalog_db');
-//
-==========================================================================
-===
+// ==========================================================================
 // COLLECTION: catalogs
 // Purpose: Store product categories and other catalog data
-//
-==========================================================================
-===
+// ==========================================================================
 db.createCollection('catalogs');
 db.catalogs.insertMany([
  // Product Categories Catalog
@@ -405,22 +397,17 @@ db.catalogs.insertMany([
  updatedAt: new Date('2025-01-01T00:00:00Z')
  }
 ]);
-//
-==========================================================================
-===
+//==========================================================================
 // COLLECTION: product_documents
 // Purpose: Denormalized product data for fast queries (CQRS Read Model)
-//
-==========================================================================
-===
+//==========================================================================
 db.createCollection('product_documents');
 db.product_documents.insertMany([
  {
  _id: '11111111-1111-1111-1111-111111111111',
  sku: 'LAPTOP-001',
  name: 'Laptop Dell XPS 15',
- description: 'High-performance laptop with Intel i7, 16GB RAM, 512GB
-SSD',
+ description: 'High-performance laptop with Intel i7, 16GB RAM, 512GB SSD',
  price: 1499.99,
  currency: 'USD',
  stock: 25,
@@ -647,14 +634,10 @@ SSD',
  updatedAt: new Date('2025-01-01T00:00:00Z')
  }
 ]);
-//
-==========================================================================
-===
+//==========================================================================
 // COLLECTION: audit_logs
 // Purpose: Store audit trails for @Auditable annotated methods (AOP)
-//
-==========================================================================
-===
+//==========================================================================
 db.createCollection('audit_logs');
 // Create indexes for efficient querying
 db.audit_logs.createIndex({ timestamp: -1 });
@@ -687,17 +670,12 @@ db.product_documents.createIndex({ name: 'text', description: 'text' });
 db.product_documents.createIndex({ price: 1 });
 db.product_documents.createIndex({ stock: 1 });
 // Display initialization summary
-print('\n=================================================================
-============');
+print('\n=============================================================================');
 print('ERP LITE - MongoDB Initialization Complete');
-print('===================================================================
-==========');
+print('=============================================================================');
 print('Database: erp_catalog_db');
 print('Collections created:');
 print(' - catalogs (' + db.catalogs.countDocuments() + ' documents)');
-print(' - product_documents (' + db.product_documents.countDocuments() +
-' documents)');
-print(' - audit_logs (' + db.audit_logs.countDocuments() + '
-documents)');
-print('===================================================================
-==========\n');
+print(' - product_documents (' + db.product_documents.countDocuments() +' documents)');
+print(' - audit_logs (' + db.audit_logs.countDocuments() + 'documents)');
+print('=============================================================================\n');
