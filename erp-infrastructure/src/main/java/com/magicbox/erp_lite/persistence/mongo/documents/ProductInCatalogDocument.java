@@ -1,4 +1,4 @@
-package com.magicbox.erp_lite.documents;
+package com.magicbox.erp_lite.persistence.mongo.documents;
 
 import jakarta.persistence.Id;
 import lombok.*;
@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "product_documents")
-public class ProductDocument {
+public class ProductInCatalogDocument {
     @Id
     private String id;
     private String sku;

@@ -1,4 +1,4 @@
-package com.magicbox.erp_lite.entities;
+package com.magicbox.erp_lite.persistence.jpa.entities;
 import com.magicbox.erp_lite.enums.OrderStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -61,6 +61,7 @@ public class OrderEntity extends BaseEntity {
     private Instant orderDate;
 
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     @Column(nullable = false, length = 20)
     private OrderStatus status = OrderStatus.PENDING;
 
@@ -71,6 +72,7 @@ public class OrderEntity extends BaseEntity {
 
     @NotBlank
     @Size(min = 3, max = 3)
+    @Builder.Default
     @Column(nullable = false, length = 3)
     private String currency = "USD";
 

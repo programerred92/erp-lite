@@ -1,4 +1,4 @@
-package com.magicbox.erp_lite.documents;
+package com.magicbox.erp_lite.persistence.mongo.documents;
 
 import com.magicbox.erp_lite.enums.CatalogType;
 import jakarta.persistence.Id;
