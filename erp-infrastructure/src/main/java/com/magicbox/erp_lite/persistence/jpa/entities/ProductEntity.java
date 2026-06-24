@@ -1,5 +1,4 @@
-package com.magicbox.erp_lite.entities;
-import com.magicbox.erp_lite.enums.OrderStatus;
+package com.magicbox.erp_lite.persistence.jpa.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -54,6 +53,7 @@ public class ProductEntity extends BaseEntity {
 
     @NotNull
     @Min(0)
+    @Builder.Default
     @Column(nullable = false)
     private Integer stock = 0;
 
@@ -65,6 +65,7 @@ public class ProductEntity extends BaseEntity {
     @Column(name = "image_url", length = 500)
     private String imageUrl;
 
+    @Builder.Default
     @Column(nullable = false)
     private Boolean active = true;
 
@@ -79,7 +80,7 @@ public class ProductEntity extends BaseEntity {
         if (stock == null) {
             stock = 0;
         }
-        if (!active) {
+        if (active == null) {
             active = true;
         }
     }

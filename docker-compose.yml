@@ -46,13 +46,13 @@ services:
   redis:
     image: redis:7
     container_name: erp-redis
-    command: redis-server --requirepass secret --maxmemory 256mb --maxmemory-policy allkeys-lru
+    command: redis-server --requirepass secret9202 --maxmemory 256mb --maxmemory-policy allkeys-lru
     ports:
       - "6379:6379"
     networks:
       - erp-vpc
     healthcheck:
-      test: [ "CMD", "redis-cli", "-a", "secret", "ping" ]
+      test: [ "CMD", "redis-cli", "-a", "secret9202", "ping" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -64,7 +64,7 @@ services:
     restart: always
     container_name: redis-ui
     environment:
-      - REDIS_HOSTS=local:redis:6379:0:secret
+      - REDIS_HOSTS=local:redis:6379:0:secret9202
       - HTTP_USER=rojinsky
       - HTTP_PASSWORD=secret9202
     ports:

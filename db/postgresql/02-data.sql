@@ -21,7 +21,7 @@ INSERT INTO products (id, sku, name, description, price, stock, category_id, act
 ('cccccccc-cccc-cccc-cccc-cccccccccccc', 'HEADSET-001', 'Sony WH-1000XM5', 'Noise cancelling, 30h battery, Bluetooth', 399.99, 28, 'cat-electronics', TRUE),
 ('dddddddd-dddd-dddd-dddd-dddddddddddd', 'DOCK-001', 'CalDigit TS4', 'Thunderbolt 4 dock, 18 ports, 98W power delivery', 399.99, 18, 'catelectronics', TRUE),
 ('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee', 'CABLE-001', 'USB-C Cable 2m', 'Thunderbolt 4, 40Gbps, 100W charging', 29.99, 100, 'cat-electronics', TRUE),
-('ffffffff-ffff-ffff-ffff-ffffffffffff', 'BACKPACK-001', 'LaptopBackpack', 'Water-resistant, fits 15" laptop, USB charging port', 69.99,55, 'cat-accessories', TRUE),
+('ffffffff-ffff-ffff-ffff-ffffffffffff', 'BACKPACK-001', 'Laptop Backpack', 'Water-resistant, fits 15" laptop, USB charging port', 69.99,55, 'cat-accessories', TRUE),
 ('10101010-1010-1010-1010-101010101010', 'ORGANIZER-001', 'Desktop Organizer', 'Bamboo wood, 5 compartments, cable management', 39.99, 70, 'cat-furniture', TRUE),
 ('20202020-2020-2020-2020-202020202020', 'PLANT-001', 'Artificial Desk Plant', 'Small succulent, realistic, no maintenance', 19.99, 90, 'cataccessories', TRUE),
 ('30303030-3030-3030-3030-303030303030', 'NOTEBOOK-001', 'Moleskine Classic Notebook', 'Large, ruled, hardcover, 240 pages', 24.99, 75, 'catstationery', TRUE),
@@ -71,16 +71,16 @@ INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_p
 INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_price, subtotal) VALUES
                                                       ('a5a5a5a5-a5a5-a5a5-a5a5-a5a5a5a5a5a5', '66666666-6666-6666-6666-666666666666', 'Mechanical Keyboard RGB', 2, 149.99, 299.98),
                                                       ('a5a5a5a5-a5a5-a5a5-a5a5-a5a5a5a5a5a5', '77777777-7777-7777-7777-777777777777', 'Logitech MX Master 3S', 2, 99.99, 199.98),
-                                                      ('a5a5a5a5-a5a5-a5a5-a5a5-a5a5a5a5a5a5', 'bbbbbbbb-bbbb-bbbb-bbbbbbbbbbbbbbbbb', 'Logitech C920 HD Pro', 1, 79.99, 79.99),
-                                                      ('a5a5a5a5-a5a5-a5a5-a5a5-a5a5a5a5a5a5', 'ffffffff-ffff-ffff-fffffffffffffffff', 'Laptop Backpack', 1, 69.99, 69.99);
+                                                      ('a5a5a5a5-a5a5-a5a5-a5a5-a5a5a5a5a5a5', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Logitech C920 HD Pro', 1, 79.99, 79.99),
+                                                      ('a5a5a5a5-a5a5-a5a5-a5a5-a5a5a5a5a5a5', 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'Laptop Backpack', 1, 69.99, 69.99);
 -- ORD-2025-006 (3 items)
 INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_price, subtotal) VALUES
                                                       ('a6a6a6a6-a6a6-a6a6-a6a6-a6a6a6a6a6a6', '11111111-1111-1111-1111-111111111111', 'Laptop Dell XPS 15', 1, 1499.99, 1499.99),
-                                                      ('a6a6a6a6-a6a6-a6a6-a6a6-a6a6a6a6a6a6', 'aaaaaaaa-aaaa-aaaa-aaaaaaaaaaaaaaaaa', 'LED Desk Lamp', 1, 49.99, 49.99),
+                                                      ('a6a6a6a6-a6a6-a6a6-a6a6-a6a6a6a6a6a6', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'LED Desk Lamp', 1, 49.99, 49.99),
                                                       ('a6a6a6a6-a6a6-a6a6-a6a6-a6a6a6a6a6a6', '77777777-7777-7777-7777-777777777777', 'Logitech MX Master 3S', 1, 99.99, 99.99);
 -- ORD-2025-007 (5 items)
 INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_price, subtotal) VALUES
-                                                      ('a7a7a7a7-a7a7-a7a7-a7a7-a7a7a7a7a7a7', 'aaaaaaaa-aaaa-aaaa-aaaaaaaaaaaaaaaaa', 'LED Desk Lamp', 2, 49.99, 99.98),
+                                                      ('a7a7a7a7-a7a7-a7a7-a7a7-a7a7a7a7a7a7', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'LED Desk Lamp', 2, 49.99, 99.98),
                                                       ('a7a7a7a7-a7a7-a7a7-a7a7-a7a7a7a7a7a7', '20202020-2020-2020-2020-202020202020', 'Artificial Desk Plant', 3, 19.99, 59.97),
                                                       ('a7a7a7a7-a7a7-a7a7-a7a7-a7a7a7a7a7a7', '30303030-3030-3030-3030-303030303030', 'Moleskine Classic Notebook', 2, 24.99, 49.98),
                                                       ('a7a7a7a7-a7a7-a7a7-a7a7-a7a7a7a7a7a7', '40404040-4040-4040-4040-404040404040', 'Pilot G2 Gel Pens Pack', 2, 14.99, 29.98),
@@ -99,8 +99,8 @@ INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_p
                                                       ('b1b1b1b1-b1b1-b1b1-b1b1-b1b1b1b1b1b1', '77777777-7777-7777-7777-777777777777', 'Logitech MX Master 3S', 1, 99.99, 99.99);
 -- ORD-2025-011 (2 items)
 INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_price, subtotal) VALUES
-                                                      ('b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2', 'bbbbbbbb-bbbb-bbbb-bbbbbbbbbbbbbbbbb', 'Logitech C920 HD Pro', 1, 79.99, 79.99),
-                                                      ('b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2', 'aaaaaaaa-aaaa-aaaa-aaaaaaaaaaaaaaaaa', 'LED Desk Lamp', 1, 49.99, 49.99);
+                                                      ('b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Logitech C920 HD Pro', 1, 79.99, 79.99),
+                                                      ('b2b2b2b2-b2b2-b2b2-b2b2-b2b2b2b2b2b2', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'LED Desk Lamp', 1, 49.99, 49.99);
 -- ORD-2025-012 (1 item)
 INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_price, subtotal) VALUES
     ('b3b3b3b3-b3b3-b3b3-b3b3-b3b3b3b3b3b3', '50505050-5050-5050-5050-505050505050', 'Magnetic Whiteboard', 1, 89.99, 89.99);
@@ -112,10 +112,10 @@ INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_p
 -- ORD-2025-014 (3 items)
 INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_price, subtotal) VALUES
                                                       ('b5b5b5b5-b5b5-b5b5-b5b5-b5b5b5b5b5b5', '66666666-6666-6666-6666-666666666666', 'Mechanical Keyboard RGB', 2, 149.99, 299.98),
-                                                      ('b5b5b5b5-b5b5-b5b5-b5b5-b5b5b5b5b5b5', 'bbbbbbbb-bbbb-bbbb-bbbbbbbbbbbbbbbbb', 'Logitech C920 HD Pro', 1, 79.99, 79.99),
-                                                      ('b5b5b5b5-b5b5-b5b5-b5b5-b5b5b5b5b5b5', 'ffffffff-ffff-ffff-fffffffffffffffff', 'Laptop Backpack', 1, 69.99, 69.99);
+                                                      ('b5b5b5b5-b5b5-b5b5-b5b5-b5b5b5b5b5b5', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'Logitech C920 HD Pro', 1, 79.99, 79.99),
+                                                      ('b5b5b5b5-b5b5-b5b5-b5b5-b5b5b5b5b5b5', 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'Laptop Backpack', 1, 69.99, 69.99);
 -- ORD-2025-015 (3 items)
 INSERT INTO order_products (order_id, product_id, product_name, quantity, unit_price, subtotal) VALUES
-                                                      ('b6b6b6b6-b6b6-b6b6-b6b6-b6b6b6b6b6b6', 'cccccccc-cccc-cccc-ccccccccccccccccc', 'Sony WH-1000XM5', 1, 399.99, 399.99),
+                                                      ('b6b6b6b6-b6b6-b6b6-b6b6-b6b6b6b6b6b6', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'Sony WH-1000XM5', 1, 399.99, 399.99),
                                                       ('b6b6b6b6-b6b6-b6b6-b6b6-b6b6b6b6b6b6', '66666666-6666-6666-6666-666666666666', 'Mechanical Keyboard RGB', 1, 149.99, 149.99),
                                                       ('b6b6b6b6-b6b6-b6b6-b6b6-b6b6b6b6b6b6', '77777777-7777-7777-7777-777777777777', 'Logitech MX Master 3S', 2, 99.99, 199.98);

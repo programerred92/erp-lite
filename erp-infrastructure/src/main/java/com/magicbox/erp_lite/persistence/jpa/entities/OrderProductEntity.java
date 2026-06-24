@@ -1,4 +1,4 @@
-package com.magicbox.erp_lite.entities;
+package com.magicbox.erp_lite.persistence.jpa.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
