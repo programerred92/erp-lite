@@ -23,3 +23,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 }
 
+tasks.withType(JavaCompile) {
+	options.incremental = true
+	options.fork = true
+}
