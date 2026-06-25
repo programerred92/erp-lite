@@ -1,103 +1,87 @@
 package com.magicbox.erp_lite.persistence.jpa.entities;
-import com.magicbox.erp_lite.enums.OrderStatus;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import lombok.*;
-import org.hibernate.annotations.BatchSize;
-
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+import lombok.*;
 
 @Entity
 @Table(
         name = "orders",
-        indexes = {
-                @Index(name = "idx_orders_customer", columnList = "customer_id"),
-                @Index(name = "idx_orders_status", columnList = "status"),
-                @Index(name = "idx_orders_order_number", columnList = "order_number")
-        },
         uniqueConstraints = {
-                @UniqueConstraint(name = "uk_orders_order_number", columnNames = "order_number")
+                @UniqueConstraint(
+                        name = "uk_orders_order_number",
+                        columnNames = "order_number"
+                )
         }
 )
-@BatchSize(size = 20)
-public class OrderEntity extends BaseEntity {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class OrderEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue
     @org.hibernate.annotations.UuidGenerator
+    @Column(name = "id", columnDefinition = "uuid", nullable = false, updatable = false)
     private UUID id;
 
-    @NotBlank
-    @Size(max = 50)
-    @Column(name = "order_number", nullable = false, unique = true, length = 50)
+    @Column(name = "order_number", length = 50, nullable = false, unique = true)
     private String orderNumber;
 
-    @NotNull
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
-    @NotBlank
-    @Size(max = 200)
-    @Column(name = "customer_name", nullable = false, length = 200)
+    @Column(name = "customer_name", length = 200, nullable = false)
     private String customerName;
 
-    @NotBlank
-    @Size(max = 100)
-    @Column(name = "created_by", nullable = false, length = 100)
+    @Column(name = "created_by", length = 100, nullable = false)
     private String createdBy;
 
-    @NotNull
     @Column(name = "order_date", nullable = false)
-    private Instant orderDate;
+    private LocalDateTime orderDate;
 
-    @Enumerated(EnumType.STRING)
-    @Builder.Default
-    @Column(nullable = false, length = 20)
-    private OrderStatus status = OrderStatus.PENDING;
+    @Column(name = "status", length = 20, nullable = false)
+    private String status;
 
-    @NotNull
-    @Digits(integer = 15, fraction = 2)
-    @Column(name = "total_amount", nullable = false, precision = 15, scale = 2)
+    @Column(name = "total_amount", precision = 15, scale = 2, nullable = false)
     private BigDecimal totalAmount;
 
-    @NotBlank
-    @Size(min = 3, max = 3)
-    @Builder.Default
-    @Column(nullable = false, length = 3)
-    private String currency = "USD";
+    @Column(name = "currency", length = 3, nullable = false)
+    private String currency;
 
-    @Builder.Default
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
     @OneToMany(
             mappedBy = "order",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY
+            orphanRemoval = true
     )
+    @Builder.Default
     private List<OrderProductEntity> items = new ArrayList<>();
 
     @PrePersist
-    public void prePersist() {
+    void prePersist() {
+        LocalDateTime now = LocalDateTime.now();
         if (orderDate == null) {
-            orderDate = Instant.now();
+            orderDate = now;
         }
         if (createdAt == null) {
-            createdAt = Instant.now();
+            createdAt = now;
         }
         if (updatedAt == null) {
-            updatedAt = Instant.now();
+            updatedAt = now;
         }
         if (status == null) {
-            status = OrderStatus.PENDING;
+            status = "PENDING";
         }
         if (currency == null) {
             currency = "USD";
@@ -105,8 +89,8 @@ public class OrderEntity extends BaseEntity {
     }
 
     @PreUpdate
-    void preUpdate(){
-        updatedAt = Instant.now();
+    void preUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 
     public void addItem(OrderProductEntity item) {
@@ -118,5 +102,4 @@ public class OrderEntity extends BaseEntity {
         items.remove(item);
         item.setOrder(null);
     }
-
 }
