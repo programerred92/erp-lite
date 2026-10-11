@@ -1,39 +1,26 @@
 package com.magicbox.erp_lite.persistence.jpa.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import lombok.*;
-import org.hibernate.annotations.BatchSize;
-
 import java.math.BigDecimal;
 import java.util.UUID;
-
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+import lombok.*;
 
 @Entity
-@Table(
-        name = "order_products",
-        indexes = {
-                @Index(name = "idx_order_products_order", columnList = "order_id"),
-                @Index(name = "idx_order_products_product", columnList = "product_id")
-        },
-        uniqueConstraints = {
-                @UniqueConstraint(name = "uk_order_products_order_product", columnNames = {"order_id", "product_id"})
-        }
-)
-@BatchSize(size = 50)
+@Table(name = "order_products")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class OrderProductEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue
     @org.hibernate.annotations.UuidGenerator
+    @Column(name = "id", columnDefinition = "uuid", nullable = false, updatable = false)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(
             name = "order_id",
             nullable = false,
@@ -41,7 +28,7 @@ public class OrderProductEntity {
     )
     private OrderEntity order;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(
             name = "product_id",
             nullable = false,
@@ -49,24 +36,16 @@ public class OrderProductEntity {
     )
     private ProductEntity product;
 
-    @NotBlank
-    @Size(max = 200)
-    @Column(name = "product_name", nullable = false, length = 200)
+    @Column(name = "product_name", length = 200, nullable = false)
     private String productName;
 
-    @NotNull
-    @Min(1)
-    @Column(nullable = false)
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @NotNull
-    @Digits(integer = 15, fraction = 2)
-    @Column(name = "unit_price", nullable = false, precision = 15, scale = 2)
+    @Column(name = "unit_price", precision = 15, scale = 2, nullable = false)
     private BigDecimal unitPrice;
 
-    @NotNull
-    @Digits(integer = 15, fraction = 2)
-    @Column(nullable = false, precision = 15, scale = 2)
+    @Column(name = "subtotal", precision = 15, scale = 2, nullable = false)
     private BigDecimal subtotal;
 
     @PrePersist
