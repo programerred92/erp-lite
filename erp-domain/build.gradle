@@ -1,8 +1,37 @@
 plugins {
 	id 'java'
+	id 'jacoco'
 }
 
 dependencies {
 	implementation project(':erp-common')
+}
+
+jacoco {
+	toolVersion = "0.8.13"
+}
+
+test {
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		xml.required = true
+		html.required = true
+	}
+}
+
+jacocoTestCoverageVerification {
+	dependsOn jacocoTestReport
+	violationRules {
+		rule {
+			limit {
+				counter = 'LINE'
+				minimum = 1.00
+			}
+		}
+	}
 }
 
