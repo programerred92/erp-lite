@@ -29,7 +29,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: secret9202
       MONGO_INITDB_DATABASE: erp_catalog_db
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
       - ./db/mongodb:/docker-entrypoint-initdb.d
     networks:
@@ -73,6 +73,30 @@ services:
       - redis
     networks:
       - erp-vpc
+
+  # LocalStack - AWS services emulation
+  localstack:
+    image: localstack/localstack:3.8.1
+    container_name: erp-localstack
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=rojinsky
+      - AWS_SECRET_ACCESS_KEY=secret9202
+    ports:
+      - "4566:4566"            # LocalStack edge port
+      - "4510-4559:4510-4559"  # External services port range
+    networks:
+      - erp-vpc
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
 networks:
   erp-vpc:

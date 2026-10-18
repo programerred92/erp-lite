@@ -1,7 +1,7 @@
 //==========================================================================
 // ERP LITE - MongoDB Initialization Script
 // Purpose: Initialize catalog database with product categories and audit
-logs
+//logs
 // Database: erp_catalog_db
 // Collections: catalogs, audit_logs, product_documents
 //==========================================================================
