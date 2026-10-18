@@ -21,6 +21,9 @@ dependencies {
 
 	//Cache
 	api 'org.springframework.boot:spring-boot-starter-cache'
+
+	//AWS
+	api "software.amazon.awssdk:s3:2.55.12"
 }
 
 tasks.withType(JavaCompile) {

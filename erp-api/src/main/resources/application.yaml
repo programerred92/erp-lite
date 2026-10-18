@@ -42,7 +42,7 @@ spring:
           min-idle: 0
 
   mongodb:
-    uri: mongodb://rojinsky:secret9202@localhost:27017/erp_catalog_db?authSource=admin
+    uri: mongodb://rojinsky:secret9202@localhost:27018/erp_catalog_db?authSource=admin
 
   web:
     error:
