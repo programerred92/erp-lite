@@ -16,7 +16,7 @@ import software.amazon.awssdk.services.s3.model.S3Exception;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class AwsImageStorageService implements ImagesStorageService {
+public class AwsImageStorageAdapter implements ImagesStorageService {
 
     private final S3Client s3Client;
     private final AwsConfigModel awsConfig;
