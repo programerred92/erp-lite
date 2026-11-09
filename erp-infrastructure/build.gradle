@@ -14,7 +14,11 @@ dependencies {
 	//Mongodb Driver
 	api 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
+	//Java Bean Validation
 	api 'org.springframework.boot:spring-boot-starter-validation'
+
+	//Rest and Web client
+	api 'org.springframework.boot:spring-boot-starter-web'
 
 	//Redis Driver
 	api 'org.springframework.boot:spring-boot-starter-data-redis'
